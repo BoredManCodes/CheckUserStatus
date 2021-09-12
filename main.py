@@ -18,7 +18,6 @@ intents = discord.Intents().all()
 intents.members = True
 
 client = commands.Bot(command_prefix='$', intents=intents)
-
 GUILD = 827079191832297473
 # bot = commands.Bot(command_prefix='$')
 client.update_mode = False
@@ -42,7 +41,8 @@ async def on_ready():
         description=init_msg,
         color=0xF03224,
     )
-    await channel1.send(embed=embed)
+    global message
+    message = await channel1.send(embed=embed)
     for guild in client.guilds:
         if guild.name == GUILD:
             break
@@ -76,7 +76,7 @@ async def update(ctx):
             description="Atnaujinimas",
             color=0xFFA500,
         )
-        await channel1.send(embed=embed)
+        await message.edit(embed=embed)
         client.update_mode = True
         print("Update turned on")
     else:
@@ -86,7 +86,7 @@ async def update(ctx):
             description="Neatnaujinama",
             color=0xFFA500,
         )
-        await channel1.send(embed=embed)
+        await message.edit(embed=embed)
         client.update_mode = False
         print("Update turned off")
 
@@ -103,7 +103,7 @@ async def on_member_update(before, after):
             msg = await channel1.history().get(author__id=886405787772145714)  # ID of bot
             await msg.delete(
                 delay=0)  # this is here because sometimes the bot tries to delete the message before there is one
-            mesg = "Name and discriminator of detected user:", before
+            mesg = "Name and discriminator of detected user:"
             await channel1.send(mesg)
             # is user offline?
             if str(after.status) == "offline":
@@ -113,7 +113,7 @@ async def on_member_update(before, after):
                     description="**Serverio versija:**\n1.17.1\n\n**Serverio IP:**\n89.40.6.180:20000\n\n**Serverio būsena**:\nIšjungtas",
                     color=0xF03224,  # red
                 )
-                await channel1.send(embed=embed)
+                await message.edit(embed=embed)
 
             # is user online?
             if str(after.status) == "online":
@@ -123,7 +123,7 @@ async def on_member_update(before, after):
                     description="**Serverio versija:**\n1.17.1\n\n**Serverio IP:**\n89.40.6.180:20000\n\n**Serverio būsena**:\nĮjungtas",
                     color=0x00FF00,  # green
                 )
-                await channel1.send(embed=embed)
+                await message.edit(embed=embed)
     else:
         print("Not displaying the server status due to update mode being set to true")
 
