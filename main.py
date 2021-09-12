@@ -103,7 +103,7 @@ async def on_member_update(before, after):
             msg = await channel1.history().get(author__id=886405787772145714)  # ID of bot
             await msg.delete(
                 delay=0)  # this is here because sometimes the bot tries to delete the message before there is one
-            mesg = "Name and discriminator of detected user:", before
+            mesg = "Name and discriminator of detected user:"
             await channel1.send(mesg)
             # is user offline?
             if str(after.status) == "offline":
@@ -128,4 +128,4 @@ async def on_member_update(before, after):
         print("Not displaying the server status due to update mode being set to true")
 
 
-client.run("token")
+client.run("ODc4NTk3MTU4Nzg0MzUyMzE4.YSDfXg.dJcrTLrrtPGo2vR-umZAmpcfcZA")
