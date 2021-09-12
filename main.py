@@ -66,7 +66,7 @@ async def on_command_error(ctx, error):
 async def update(ctx):
     # delete any past messages from this bot
     channel1 = client.get_channel(channel_ID)  # ID of channel
-    msg = await channel1.history().get(author__id=878597158784352318)  # ID of bot
+    msg = await channel1.history().get(author__id=886405787772145714)  # ID of bot
     await msg.delete(delay=0)  # this is here because sometimes the bot tries to delete the message before there is one
 
     if not client.update_mode:
@@ -100,7 +100,7 @@ async def on_member_update(before, after):
             await channel1.send("detected status change of pls_ignore")
             # delete any past messages from this bot
             channel1 = client.get_channel(channel_ID)  # ID of channel
-            msg = await channel1.history().get(author__id=878597158784352318)  # ID of bot
+            msg = await channel1.history().get(author__id=886405787772145714)  # ID of bot
             await msg.delete(
                 delay=0)  # this is here because sometimes the bot tries to delete the message before there is one
             mesg = "Name and discriminator of detected user:", before
