@@ -128,4 +128,4 @@ async def on_member_update(before, after):
         print("Not displaying the server status due to update mode being set to true")
 
 
-client.run("ODc4NTk3MTU4Nzg0MzUyMzE4.YSDfXg.dJcrTLrrtPGo2vR-umZAmpcfcZA")
+client.run("token")
